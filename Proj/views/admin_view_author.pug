@@ -1,0 +1,17 @@
+html
+    script
+        include ./script.js
+
+
+    if first
+        p Enter the Author id
+            form(action='/admin/view/author', method='POST')
+                p
+                | Author id: 
+                input(type='text', name='id', value='a7ba8a98-47aa-4010-a532-56adf7ec7a95')
+                input(type='submit', value='submit')
+    else
+        p= "For Author '"+name+"': "
+        p= "Total Expenditure: "+expenditure
+        p= "Total Sales: "+sales
+

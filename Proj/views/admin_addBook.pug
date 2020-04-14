@@ -1,0 +1,20 @@
+html 
+    p Make sure every blank is filled, you will be directed to the last page afterwards.
+    form(action='addBook', method='POST')
+        p
+        | ISBN 
+        input(type='text', name='isbn', value='')
+        | 	Title: 
+        input(type='text', name='title', value='')
+        | 	Page Number: 
+        input(type='text', name='pageNum', value='')
+        | 	Price: 
+        input(type='text', name='price', value='')
+        | 	Cost: 
+        input(type='text', name='cost', value='')
+        | 	Year: 
+        input(type='text', name='year', value='')
+        |  Stock: 
+        input(type='text', name='bookNum', value='')
+        input(type='submit', value='Add')
+

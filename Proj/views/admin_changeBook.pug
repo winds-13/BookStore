@@ -1,0 +1,9 @@
+html
+    script
+        include ./script.js
+
+    p Enter the ISBN of the book you want to change
+        p
+        | ISBN 
+        input(type='text', name='isbn', value='')
+        input(type='submit', value='change', onclick='changeBook()')

@@ -1,0 +1,36 @@
+html
+    script
+        include ./script.js
+    #main
+        body 
+            a(href="/") Home
+            | &nbsp
+            | &nbsp
+            a(href="/browse") Shop
+            | &nbsp
+            | &nbsp
+            a(href="/order") Orders
+            | &nbsp
+            | &nbsp
+            a(href="/logout") Logout
+            p="Hello, "+name+". "
+            -var temp_link = "/users/"+userId
+            a(href= temp_link) #{"click here to view your profile"}
+
+            br
+            br
+
+            div#tracking
+                p Enter the order number to track an order:
+                input(class='text', name='track', value='')
+                button#tracking(type="button", onclick='track()') Track
+            br
+            div#start 
+                h1="Orders:"
+                each i in result
+                    -var temp_link = "/order/"+i.order_id
+                    a(href= temp_link) #{i.order_id}
+                    h= "  Order Time: " + i.ts
+                    br
+                    br
+                

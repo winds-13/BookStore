@@ -1,0 +1,17 @@
+html
+    head
+        a(href="/admin") Admin
+        br
+        a(href="/logout") Logout
+        br
+        br
+
+    body
+        -var temp_link = "/admin/view/vs"
+        a(href= temp_link) Total Sales vs Expenditure
+        br
+        -var temp_link = "/admin/view/author"
+        a(href= temp_link) Sales by Author
+        br
+        -var temp_link = "/admin/view/genre"
+        a(href= temp_link) Sales by Genre

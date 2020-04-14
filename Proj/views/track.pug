@@ -1,0 +1,35 @@
+html
+    #main
+        head
+        body 
+            a(href="/") Home
+            | &nbsp
+            | &nbsp
+            a(href="/browse") Shop
+            | &nbsp
+            | &nbsp
+            a(href="/order") Orders
+            | &nbsp
+            | &nbsp
+            a(href="/logout") Logout
+            p="Hello, "+name+". "
+            -var temp_link = "/users/"+userId
+            a(href= temp_link) #{"click here to view your profile"}
+
+            br
+            br
+
+            div#start 
+                p= "Order Id: " 
+                    -var temp_link = "/order/"+result.order_id
+                    a(href= temp_link) #{result.order_id}
+                p= "Tracking Id: " + result.tracking_id
+                p= "Time of Order: " + result.ts
+                br
+                p= "Current Location: " + result.location
+                p= "Name: " + result.s_fname+" "+result.s_lname
+                p= "Email: " + result.s_email
+                p= "Phone: " + result.s_phone
+                p= "Destination: "+result.destination
+                
+

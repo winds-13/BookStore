@@ -1,0 +1,25 @@
+html
+	#main
+		head
+			title Registration
+		
+		p Note that you will be using your email address to log in
+		body
+			form(action='/register', method='POST')
+				p
+				| first name: 
+				input(type='text', name='firstName', value='')
+				| 	last name: 
+				input(type='text', name='lastName', value='')
+				| 	default address: 
+				input(type='text', name='address', value='')
+				| 	email: 
+				input(type='text', name='email', value='')
+				| 	password: 
+				input(type='text', name='password', value='')
+				| 	phone no.: 
+				input(type='text', name='phone', value='')
+				input(type='submit', value='register')
+
+		h1 #{message}
+					

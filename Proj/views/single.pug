@@ -1,0 +1,35 @@
+html
+	head
+	body
+		div#results
+			p= "ISBN13: "+message.isbn
+			p= "Title: "+message.name
+			p= "price: "+message.price
+			p= "Stock: "+message.stock
+			br
+			p= "Author: "
+				each item in author
+					li=item['name']
+			br
+			p= "Year: "+message.year
+			br
+			p= "Publisher: "
+				each item in publisher
+					li=item['name']
+			br
+			p= "Page Number: "+message.pagenum
+			br
+			p= "Genres: "
+				each item in tags
+					li=item['name']
+			
+		
+			br
+			p= "Similar Books: "
+				each value, key in obj
+					li= key
+					each item in obj[key]
+						-var temp_link = "/browse/"+item["isbn"]
+						-var name = item['name']
+						a(href= temp_link) #{name}
+						br

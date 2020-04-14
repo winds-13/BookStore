@@ -1,0 +1,38 @@
+html
+    #main
+        head
+        body 
+            a(href="/") Home
+            | &nbsp
+            | &nbsp
+            a(href="/browse") Shop
+            | &nbsp
+            | &nbsp
+            a(href="/order") Orders
+            | &nbsp
+            | &nbsp
+            a(href="/logout") Logout
+            p="Hello, "+name+". "
+            -var temp_link = "/users/"+userId
+            a(href= temp_link) #{"click here to view your profile"}
+
+            br
+            br
+
+            div#start 
+                
+                p= "Order Id: " + result[0].order_id
+                p= "Time of Order: " + result[0].ts
+                br
+                p= "Books: "
+                    each i in result
+                        li= key
+                            -var temp_link = "/browse/"+i['isbn']
+                            -var name = i['name']
+                            a(href= temp_link) #{name}
+                            p="Amount: "+ i['book_num']
+                br
+                p= "Tracking: "
+                each i in track
+                    -var temp_link = "/track/"+i.tracking_id
+                    a(href= temp_link) #{i.tracking_id}

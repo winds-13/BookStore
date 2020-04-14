@@ -1,0 +1,56 @@
+html
+	script
+		include ./script.js
+	head
+		if logged
+			a(href="/") Home
+			| &nbsp
+			| &nbsp
+			a(href="/order") Orders
+			| &nbsp
+			| &nbsp
+			a(href="/logout") Logout
+			p="Hello, "+name+". "
+			-var temp_link = "/users/"+userId
+			a(href= temp_link) #{"click here to view your profile"}
+		else
+			form(action='/login', method='POST')
+				p
+				| username: 
+				input(type='text', name='username', value='')
+				| 	password: 
+				input(type='text', name='password', value='')
+				input(type='submit', value='Login')
+			
+			a(href="/register"): button(type="button") Register
+			<br />
+			p1 #{message}
+
+	body(onload="preLoad()")
+		h1 Books in Cart
+		div#buffer
+			p The cart is empty
+		br
+		
+		div#bottom_half
+			button#remove(type="button", onclick='remove()') Remove
+			button#refresh(type="button", onclick='checkOut()') Check Out
+			br
+			br
+			
+			h1 Serch/Add New Books
+			
+			input(type='text', class='input', name='search', value='')
+			select#class
+				option() #{"Book Name"}
+				option() #{"Author"}
+				option() #{"ISBN"}
+				option() #{"genre"}
+
+			input(type='submit', value='search', onclick="load()")
+			br
+
+			button#addQ(type="button", onclick='transfer()') Add	
+			div#results
+				
+		

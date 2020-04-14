@@ -1,0 +1,17 @@
+html
+    head
+        a(href="/admin") Admin
+        br
+        a(href="/logout") Logout
+        br
+        br
+
+    body
+        -var temp_link = "/admin/addBook"
+        a(href= temp_link) Add a Book
+        br
+        -var temp_link = "/admin/changeBook"
+        a(href= temp_link) Change a Book
+        br
+        -var temp_link = "/admin/deleteBook"
+        a(href= temp_link) Delete a Book

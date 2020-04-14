@@ -1,0 +1,36 @@
+html
+    script
+        include ./script.js
+        
+    head
+        a(href="/") Home
+        | &nbsp
+        | &nbsp
+        a(href="/browse") Shop
+        | &nbsp
+        | &nbsp
+        a(href="/order") Orders
+        | &nbsp
+        | &nbsp
+        a(href="/logout") Logout
+
+    -var fname = result.first_name
+    -var lname = result.last_name
+    -var email = result.email
+    -var phone = result.phone
+    -var address = result.default_address
+    body
+    div#info
+        p First Name: !{' '}
+            span #{fname}
+        p Last Name: !{' '}
+            span #{lname}
+        p Email: !{' '}
+            span #{email}
+        p Phone: !{' '}
+            span #{phone}
+        p Address: !{' '}
+            span #{address}
+
+        br
+        button#address(type="button", onclick='changeProfile()') Change	Something
