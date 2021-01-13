@@ -1,0 +1,11 @@
+html
+        head
+        body
+                each product in featured
+                        -var temp = product._id
+                        -var temp_link = "/users/"+product._id
+                        -var temp_name = product.username;
+                        
+                        
+                        a(href= temp_link) #{temp_name}
+                        br

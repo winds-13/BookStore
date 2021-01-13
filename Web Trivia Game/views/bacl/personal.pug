@@ -1,0 +1,19 @@
+html
+        head
+        body
+                h1= "Profile for " + featured[0].username
+
+                a Private Mode:
+                form(action="/private/"+featured[0]._id, method="POST")
+                        |On:
+                        input(type='radio', name='private', id='private', value='On')
+                        br
+                        |Off:
+                        input(type='radio', name='private', id='private', value='Off')
+                        br
+                        input(type="Submit" value="Save Changes")
+                        br
+                       
+
+
+                

@@ -1,0 +1,41 @@
+mixin single
+        html
+                head
+                body
+                        h1= "Profile for " + featured[0].username
+                        a Private Mode:
+                        form(action="/private/"+featured[0]._id, method="POST")
+                                |On:
+                                input(type='radio', name='private', id='private', value='On')
+                                br
+                                |Off:
+                                input(type='radio', name='private', id='private', value='Off')
+                                br
+                                input(type="Submit" value="Save Changes")
+                                br                
+                        
+                        p= "Total Quizzes: " + featured[0].total_quizzes
+                        p= "Average Score: " + featured[0].average
+                        a(href="/logout") Logout
+
+mixin up
+        html
+                head
+                        title Quiz Tracker
+                
+                body
+                        
+                        a(href="/") home 
+                        | &nbsp
+                        | &nbsp
+                        
+                        a(href="/quiz") start
+                        | &nbsp
+                        | &nbsp
+                        
+                        a(href="/users") users
+
+      
+
++up
++single

@@ -1,0 +1,51 @@
+a(href="/") home 
+| &nbsp
+| &nbsp
+
+a(href="/quiz") start
+| &nbsp
+| &nbsp
+
+a(href="/users") users
+| &nbsp
+| &nbsp
+if logged
+	a(href="/logout") Logout
+
+if logged
+	p="Hello, "+featured.username+". "
+	-var temp_link = "/users/"+featured._id
+	a(href= temp_link) #{"click here to view your profile"}
+else
+	form(action='/login', method='POST')
+		p
+		| username: 
+		input(type='text', name='username', value='')
+		| 	password: 
+		input(type='text', name='password', value='')
+		input(type='submit', value='Login')
+	html
+		head
+			title Random Quiz
+br
+br
+body(onload="init()")
+	- let i = 1;
+	for question in questions
+		-allAnswers = []
+		-allAnswers.push(question.correct_answer)
+		for incorrect in question.incorrect_answers
+			-allAnswers.push(incorrect)
+		div(id=question._id, class="question_div")
+			span #{i}. !{question.question}
+			br
+			-let answerCount = 0;
+			for answer in allAnswers
+				input(type="radio", id=question._id + "_" + answerCount, name=question._id, value=answer)
+				span !{answer}
+				br
+				-answerCount++;
+			br
+		-i++;
+	input(type="button", onclick="submit()" value="Submit")
+	script(src="/js/quiz.js")

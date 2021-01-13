@@ -1,0 +1,38 @@
+a(href="/") home 
+| &nbsp
+| &nbsp
+
+a(href="/quiz") start
+| &nbsp
+| &nbsp
+
+a(href="/users") users
+| &nbsp
+| &nbsp
+if logged
+	a(href="/logout") Logout
+
+if logged
+	p="Hello, "+person.username+". "
+	-var temp_link = "/users/"+person._id
+	a(href= temp_link) #{"click here to view your profile"}
+else
+	form(action='/login', method='POST')
+		p
+		| username: 
+		input(type='text', name='username', value='')
+		| 	password: 
+		input(type='text', name='password', value='')
+		input(type='submit', value='Login')
+	
+br
+br
+
+each product in featured
+		-var temp = product._id
+		-var temp_link = "/users/"+product._id
+		-var temp_name = product.username;
+		
+		
+		a(href= temp_link) #{temp_name}
+		br

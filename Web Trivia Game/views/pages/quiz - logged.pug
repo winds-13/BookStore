@@ -1,0 +1,80 @@
+mixin logged
+	p="Hello, "+featured[0].username+". "
+	-var temp_link = "/users/"+featured[0]._id
+	a(href= temp_link) #{"click here to view your profile"}
+
+
+mixin quiz
+	html
+		head
+			title Random Quiz
+			
+		body(onload="init()")
+			- let i = 1;
+			for question in questions
+				-allAnswers = []
+				-allAnswers.push(question.correct_answer)
+				for incorrect in question.incorrect_answers
+					-allAnswers.push(incorrect)
+				div(id=question._id, class="question_div")
+					span #{i}. !{question.question}
+					br
+					-let answerCount = 0;
+					for answer in allAnswers
+						input(type="radio", id=question._id + "_" + answerCount, name=question._id, value=answer)
+						span !{answer}
+						br
+						-answerCount++;
+					br
+				-i++;
+			input(type="button", onclick="submit()" value="Submit")
+			script(src="/js/quiz.js")
+mixin up
+	html
+			head
+					title Quiz Tracker
+			
+			body
+					
+					a(href="/") home 
+					| &nbsp
+					| &nbsp
+					
+					a(href="/quiz") start
+					| &nbsp
+					| &nbsp
+					
+					a(href="/users") users
+
+
+
+
+mixin registration
+	form(action='/login', method='POST')
+		p
+		|username: 
+		input(type='text', name='username', value='')
+		|       password: 
+		input(type='text', name='password', value='')
+		input(type='submit', value='Login')
+
+			
+
+
+
+mixin users
+	each product in featured
+		-var temp = product._id
+		-var temp_link = "/users/"+product._id
+		-var temp_name = product.username;
+		
+		
+		a(href= temp_link) #{temp_name}
+		br
+
+
+
++up
++logged
++users
++quiz

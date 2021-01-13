@@ -1,0 +1,54 @@
+mixin up
+        html
+                head
+                        title Quiz Tracker
+                
+                body
+                        
+                        a(href="/") home 
+                        | &nbsp
+                        | &nbsp
+                        
+                        a(href="/quiz") start
+                        | &nbsp
+                        | &nbsp
+                        
+                        a(href="/users") users
+
+mixin index 
+        h1 Welcome to the Quiz Tracker
+        br
+        br
+        a(href="/quiz") Get a quiz
+
+mixin registration
+        form(action='/login', method='POST')
+                p
+                |username: 
+                input(type='text', name='username', value='')
+                |       password: 
+                input(type='text', name='password', value='')
+                input(type='submit', value='Login')
+
+mixin logged
+        p="Hello, "+name+". "
+        -var temp_link = "/users/"+id
+        a(href= temp_link) #{"click here to view your profile"}
+
+
+mixin users
+        each product in featured
+                -var temp = product._id
+                -var temp_link = "/users/"+product._id
+                -var temp_name = product.username;
+                
+                
+                a(href= temp_link) #{temp_name}
+                br
+
++up
+
++registration
+
+
++users
